@@ -26,3 +26,63 @@ PATCH  http://localhost:4000/users/lintonli162@gmail.com
     "EMAIL": "lintonli162@gmail.com",
     "PASSWORD": "Linton@123"
  }
+
+######
+POST http://localhost:4000/category
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+Content-Type: application/json
+
+{
+   "CNAME":"Hospital journal"
+}
+
+######
+GET  http://localhost:4000/category
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+
+####
+ GET  http://localhost:4000/category/92f32813-af35-420c-bdb1-603b24e57c17
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+#######
+//journals
+ POST http://localhost:4000/journal
+ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+ Content-Type: application/json
+
+ {
+   "JNAME":"Journal Child Bearing",
+   "JCONTENT":"The American Health Association publishes a journal focused on the Child Bearing in Africa",
+   "JDATE":"2024-07-02",
+   "CATEGORYID":"92f32813-af35-420c-bdb1-603b24e57c17"
+ }
+
+
+######
+ 
+ GET http://localhost:4000/journal
+ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+
+#####
+ GET http://localhost:4000/journal/8138612c-e7d6-413e-97d1-6c6c125f06f4
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+ 
+#####
+GET http://localhost:4000/journal/category/92f32813-af35-420c-bdb1-603b24e57c17
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+
+#######
+PATCH http://localhost:4000/journal/8138612c-e7d6-413e-97d1-6c6c125f06f4
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
+Content-Type: application/json
+
+{
+   "JNAME":"Journal of Medicine",
+   "JCONTENT":"The American Health Association publishes a journal focused on the research of Cancer",
+   "JDATE":"2024-07-03",
+   "CATEGORYID":"92f32813-af35-420c-bdb1-603b24e57c17"
+}
+
+#####
+
+DELETE  http://localhost:4000/journal/8138612c-e7d6-413e-97d1-6c6c125f06f4
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVUIiOiJlNWMxYWVkNS1kZWZmLTQ3ODctOTU5ZS0yNDJmMjdhODZjNDMiLCJVTkFNRSI6IkxpbnRvbiIsIlVST0xFIjoiVVNFUiIsImlhdCI6MTcxOTkyNTA0OSwiZXhwIjoxNzE5OTMyMjQ5fQ.Frc2PX9K7Vr9ghoDofsLHaYARPDxgSQO8lt-EPphbMQ
