@@ -1,0 +1,28 @@
+POST  http://localhost:4000/users/login
+ Content-Type: application/json
+
+ {
+    "EMAIL": "lintonli162@gmail.com",
+    "PASSWORD": "Lint@123"
+ }
+
+###
+POST http://localhost:4000/users/register
+ Content-Type: application/json
+
+ {
+    "NAME": "Linton",
+    "EMAIL": "lintonli162@gmail.com",
+    "PASSWORD": "Lint@123"
+    
+ }
+
+
+####
+PATCH  http://localhost:4000/users/lintonli162@gmail.com
+ Content-Type: application/json
+
+ {
+    "EMAIL": "lintonli162@gmail.com",
+    "PASSWORD": "Linton@123"
+ }
