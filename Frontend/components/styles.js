@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { View, Text }  from 'react-native'
+import { View, Text,TouchableOpacity }  from 'react-native'
 import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.statusBarHeight;
@@ -32,14 +32,23 @@ export const PageTitle = styled.Text`
   font-weight: bold;
   color: ${brand};
   padding: 10px;
+
+  ${(props)=>props.welcome &&`
+    font-size:38px;
+    `}
 `;
 export const SubTitle = styled.Text`
-font-size:18px;
-margin-bottom:20px;
-left-spacing:1px;
-font-weight:bold;
-color:${tertiary};
-
+  font-size: 18px;
+  margin-bottom: 20px;
+  left-spacing: 1px;
+  font-weight: bold;
+  color: ${tertiary};
+  ${(props) =>
+    props.welcome &&
+    `
+    font-weight:normal;
+    margin-bottom:5px;
+    `}
 `;
 export const StyledFormArea =styled.View`
 width:90%;
@@ -61,17 +70,90 @@ color:${tertiary};
 font-size:13px;
 text-align:left;
 `;
-
+export const LeftIcon = styled.View`
+left:15px;
+top:68px;
+posotion:absolute;
+z-index:1;
+`;
+export const RightIcon= styled.TouchableOpacity`
+right:15px;
+top:68px;
+position:absolute;
+z-index:1;
+`;
 export const StyledButton = styled.TouchableOpacity`
 padding:15px;
+align-items:center;
 background-color:${brand};
 justify-content:center;
 border-radius:5px;
 margin-vertical:5px;
 height:60px;
+
+${(props)=>props.google==true &&`
+  background-color:${green};
+  flex-direction:row;
+  gap:10px;
+  justify-content:center;
+  `}
 `;
 
 export const ButtonText = styled.Text`
-color:${primary};
-font-size:16px;
-`
+  color: ${primary};
+  font-size: 16px;
+  ${(props) =>
+    props.google == true &&
+    `
+ padding:1px;
+  `}
+`;
+export const MessageBox= styled.Text`
+text-align:center;
+font-size:12px; 
+`;
+export const Line= styled.View`
+height:1px;
+width:100%;
+background-color:${darkLight};
+margin-vertical:1opx;
+`;
+export const ExtraView = styled.View`
+justify-content:center;
+flex-direction:row;
+align-items:center;
+padding:10px;
+`;
+export const ExtraText = styled.Text`
+justify-content:center;
+align-content:center;
+color:${tertiary};
+font-size:15px;
+`;
+export const  TextLink = styled.TouchableOpacity`
+justify-content:center;
+align-items:center;
+`;
+export const TextLinkContent = styled.Text`
+color:${brand};
+font-size:15px;
+`;
+export const WelcomeContainer = styled(InnerContainer)`
+padding:25px;
+padding-top:10px;
+justify-content:center;
+`;
+export const Avatar=styled.Image`
+width:100px;
+height:100px;
+margin:auto;
+border-radius:50px;
+border-width:2px;
+border-color:${secondary};
+margin-bottom:10px;
+margin-top:10px;
+`;
+export const WelcomeImage=styled.Image`
+height:50%;
+min-width:100%;
+`;
