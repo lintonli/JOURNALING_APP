@@ -17,13 +17,14 @@ import {
 import { View } from "react-native";
 
 const { brand, darkLight, primary } = Colors;
-const Welcome = () => {
+const Welcome = ({navigation}) => {
  
   return (
     <>
       <StatusBar style='light' />
       <InnerContainer>
-        <WelcomeImage resizeMode="cover"
+        <WelcomeImage
+          resizeMode='cover'
           source={{
             uri: "https://cdn.pixabay.com/photo/2017/08/07/20/21/still-2607441_640.jpg",
           }}
@@ -33,9 +34,8 @@ const Welcome = () => {
           <SubTitle welcome={true}>Welcome to our Shamiri APP</SubTitle>
 
           <StyledFormArea>
-            
             <Line />
-            <StyledButton onPress={() => {}}>
+            <StyledButton onPress={() => navigation.navigate("Login")}>
               <ButtonText>LOGOUT</ButtonText>
             </StyledButton>
           </StyledFormArea>

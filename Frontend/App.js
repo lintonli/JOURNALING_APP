@@ -1,13 +1,8 @@
 
 import React from 'react';
-import Signup from './screens/signup';
-import Welcome from './screens/welcome';
-import Login from './screens/login';
+import RootStack from './navigators/rootStack';
 export default function App() {
-  return <Welcome />;
-   
-
-  
+  return <RootStack />;
 }
 
 

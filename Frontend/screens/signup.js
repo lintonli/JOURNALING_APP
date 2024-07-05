@@ -25,7 +25,7 @@ import { Formik } from "formik";
 import { View } from "react-native";
 
 const { brand, darkLight, primary } = Colors;
-const Signup = () => {
+const Signup = ({navigation}) => {
   const [hidePassword, setHidepassword] = useState(true);
   return (
     <StyledContainer>
@@ -34,9 +34,10 @@ const Signup = () => {
         <PageTitle>Shamiri Journals</PageTitle>
         <SubTitle>Account Signup</SubTitle>
         <Formik
-          initialValues={{ EMAIL: "", PASSWORD: "" ,NAME:""}}
+          initialValues={{ EMAIL: "", PASSWORD: "", NAME: "" }}
           onSubmit={(values) => {
             console.log(values);
+            navigation.navigate("Login");
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -49,7 +50,6 @@ const Signup = () => {
                 onChangeText={handleChange("NAME")}
                 onBlur={handleBlur("NAME")}
                 value={values.NAME}
-                
               />
               <MyTextInput
                 label='Email Address'
@@ -76,13 +76,13 @@ const Signup = () => {
               />
               <MessageBox>...</MessageBox>
               <StyledButton onPress={handleSubmit}>
-                <ButtonText>LOGIN</ButtonText>
+                <ButtonText>SIGNUP</ButtonText>
               </StyledButton>
               <Line />
 
               <ExtraView>
                 <ExtraText>Already have an account?</ExtraText>
-                <TextLink>
+                <TextLink onPress={() => navigation.navigate("Login")}>
                   <TextLinkContent>Login</TextLinkContent>
                 </TextLink>
               </ExtraView>
