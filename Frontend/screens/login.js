@@ -23,7 +23,7 @@ const Login = ({navigation})=>{
 const [message, setMessage]=useState();
 const [messageType, setMessageType]=useState();
 
-  const handleLogin=(credentials, setSubmitting)=>{
+  const handleLogin=(credentials, setSubmitting, resetForm)=>{
     handleMessage(null)
 const url = "http://192.168.1.172:4000/users/login";
 axios.post(url, credentials)
@@ -36,6 +36,7 @@ if (response.status !== 200){
 }else{
    handleMessage(message, "SUCCESS");
   navigation.navigate('Welcome',{token})
+  resetForm();
 }
 setSubmitting(false);
 })
@@ -59,13 +60,13 @@ setSubmitting(false);
           <SubTitle>Account Login</SubTitle>
           <Formik
             initialValues={{ EMAIL: "", PASSWORD: "" }}
-            onSubmit={(values,{setSubmitting}) => {
+            onSubmit={(values,{setSubmitting, resetForm}) => {
               if(values.EMAIL==''|| values.PASSWORD==''){
                 handleMessage("Please fill all the required fields");
                 setSubmitting(false);
               }
               else{
-                handleLogin(values, setSubmitting);
+                handleLogin(values, setSubmitting,resetForm);
               }
             }}
           >
@@ -74,7 +75,7 @@ setSubmitting(false);
               handleBlur,
               handleSubmit,
               values,
-              isSubmitting,
+              isSubmitting,resetForm
             }) => (
               <StyledFormArea>
                 <MyTextInput

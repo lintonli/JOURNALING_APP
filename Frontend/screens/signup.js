@@ -22,11 +22,43 @@ import {
   TextLinkContent,
 } from "../components/styles";
 import { Formik } from "formik";
-import { View } from "react-native";
+import { View, ActivityIndicator } from "react-native";
+import axios from "axios";
 
 const { brand, darkLight, primary } = Colors;
 const Signup = ({navigation}) => {
   const [hidePassword, setHidepassword] = useState(true);
+
+  const [message, setMessage] = useState();
+  const [messageType, setMessageType] = useState();
+
+  const handleSignup = (credentials, setSubmitting) => {
+    handleMessage(null);
+    const url = "http://192.168.1.172:4000/users/register";
+    axios
+      .post(url, credentials)
+      .then((response) => {
+        const result = response.data;
+        const { message} = result;
+
+        if (response.status !== 200) {
+          handleMessage(message, "FAILED");
+        } else {
+          handleMessage(message, "SUCCESS");
+          navigation.navigate("Login");
+        }
+        setSubmitting(false);
+      })
+      .catch((error) => {
+        console.log(error.response ? error.response.data : error.message);
+        setSubmitting(false);
+        handleMessage("An error occured. kindly try again");
+      });
+  };
+  const handleMessage = (message, type = "FAILED") => {
+    setMessage(message);
+    setMessageType(type);
+  };
   return (
     <StyledContainer>
       <StatusBar style='dark' />
@@ -35,12 +67,20 @@ const Signup = ({navigation}) => {
         <SubTitle>Account Signup</SubTitle>
         <Formik
           initialValues={{ EMAIL: "", PASSWORD: "", NAME: "" }}
-          onSubmit={(values) => {
-            console.log(values);
-            navigation.navigate("Login");
+          onSubmit={(values, { setSubmitting }) => {
+            if (
+              values.EMAIL == "" ||
+              values.PASSWORD == "" ||
+              values.NAME == ""
+            ) {
+              handleMessage("Please fill all the required fields");
+              setSubmitting(false);
+            } else {
+              handleSignup(values, setSubmitting);
+            }
           }}
         >
-          {({ handleChange, handleBlur, handleSubmit, values }) => (
+          {({ handleChange, handleBlur, handleSubmit, values, isSubmitting}) => (
             <StyledFormArea>
               <MyTextInput
                 label='Full Name'
@@ -74,10 +114,19 @@ const Signup = ({navigation}) => {
                 hidePassword={hidePassword}
                 setHidepassword={setHidepassword}
               />
-              <MessageBox>...</MessageBox>
-              <StyledButton onPress={handleSubmit}>
-                <ButtonText>SIGNUP</ButtonText>
-              </StyledButton>
+              <MessageBox type={messageType}>{message}</MessageBox>
+
+              {!isSubmitting && (
+                <StyledButton onPress={handleSubmit}>
+                  <ButtonText>SIGNUP</ButtonText>
+                </StyledButton>
+              )}
+              {isSubmitting && (
+                <StyledButton disabled={true}>
+                  <ActivityIndicator size='large' color={primary} />
+                </StyledButton>
+              )}
+
               <Line />
 
               <ExtraView>

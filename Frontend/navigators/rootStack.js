@@ -1,17 +1,17 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/login";
 import Signup from "../screens/signup";
 import Welcome from "../screens/welcome";
 import { Colors } from "../components/styles";
 const{primary, tertiary}= Colors;
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
  const RootStack =()=>{
     return(
         <NavigationContainer>
             <Stack.Navigator
-                screeenOptions={{
+                screenOptions={{
                     headerStyle:{
                         backgroundColor:'transparent'
                     },
